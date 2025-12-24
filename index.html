@@ -1,99 +1,370 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Restaurant japonais – Réservation | Coki B&B</title>
-  <meta name="description" content="Cuisine japonaise contemporaine. Menus clairs, réservation rapide, horaires et accès. Découvrez Coki B&B." />
+  <!-- ✅ SEO: à personnaliser -->
+  <title>Restaurant japonais contemporain à Paris | Réserver | Coki B&B</title>
+  <meta name="description" content="Cuisine japonaise contemporaine à Paris. Menus clairs, photos, horaires, accès et réservation rapide. Réservez une table en quelques secondes." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://ridahx.github.io/restaurant-landing/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Coki B&B – Restaurant japonais" />
-  <meta property="og:description" content="Cuisine japonaise contemporaine. Menus clairs, réservation rapide, horaires et accès." />
+  <!-- ✅ Open Graph / Social -->
+  <meta property="og:title" content="Coki B&B — Restaurant japonais contemporain" />
+  <meta property="og:description" content="Menus clairs, horaires, accès et réservation rapide. Découvrez la table japonaise moderne à Paris." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:url" content="https://ridahx.github.io/restaurant-landing/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542737579-bb9f3e0c8b49?auto=format&fit=crop&w=1600&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind (gratuit) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font (gratuit) -->
+  <!-- ✅ Performance: préconnect -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Font premium (gratuite) -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ✅ Tailwind CDN (gratuit) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial'] },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.35)',
+            glow: '0 0 0 1px rgba(255,255,255,.08), 0 20px 60px rgba(0,0,0,.50)'
+          },
+          keyframes: {
+            floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+            sheen: { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(120%)' } }
+          },
+          animation: {
+            floaty: 'floaty 6s ease-in-out infinite',
+            sheen: 'sheen 2.2s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    :root { color-scheme: dark; }
+    html { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+    /* Subtle grain */
+    .grain:before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.55;
+    }
+    /* Nice focus */
+    :focus-visible { outline: 2px solid rgba(255,255,255,.55); outline-offset: 3px; border-radius: 14px; }
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      html { scroll-behavior: auto; }
+      .reveal { transition: none; }
+      .animate-floaty, .animate-sheen { animation: none !important; }
+    }
   </style>
+
+  <!-- ✅ SEO Local: Schema.org (à personnaliser) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Coki B&B",
+    "servesCuisine": ["Japanese", "Contemporary"],
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "66 avenue Émile Zola",
+      "addressLocality": "Paris",
+      "postalCode": "75015",
+      "addressCountry": "FR"
+    },
+    "telephone": "+33100000000",
+    "url": "https://ridahx.github.io/restaurant-landing/",
+    "image": "https://images.unsplash.com/photo-1542737579-bb9f3e0c8b49?auto=format&fit=crop&w=1600&q=80",
+    "acceptsReservations": "True",
+    "openingHoursSpecification": [
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens":"12:00", "closes":"14:30" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens":"19:00", "closes":"22:30" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Saturday"], "opens":"19:00", "closes":"23:00" }
+    ]
+  }
+  </script>
 </head>
 
-<body class="bg-neutral-950 text-neutral-50">
+<body class="bg-neutral-950 text-neutral-50 selection:bg-white selection:text-neutral-950">
+  <!-- Top announcement -->
+  <div class="relative overflow-hidden border-b border-white/10 bg-neutral-950">
+    <div class="max-w-6xl mx-auto px-4 py-2 text-xs sm:text-sm text-neutral-300 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_20px_rgba(52,211,153,.65)]"></span>
+        <span>Réservation recommandée • Service fluide • Menus clairs</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-3">
+        <a class="hover:text-white underline decoration-white/20 hover:decoration-white/60" href="tel:+33100000000">+33 1 00 00 00 00</a>
+        <span class="text-white/15">|</span>
+        <a class="hover:text-white underline decoration-white/20 hover:decoration-white/60" href="#infos">Accès & horaires</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-neutral-950/80 backdrop-blur border-b border-neutral-800">
+  <header class="sticky top-0 z-50 bg-neutral-950/70 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#" class="font-semibold tracking-tight">Coki B&B</a>
-      <nav class="hidden md:flex gap-6 text-sm text-neutral-300">
-        <a href="#concept" class="hover:text-white">Concept</a>
-        <a href="#menu" class="hover:text-white">Menus</a>
-        <a href="#infos" class="hover:text-white">Infos</a>
-        <a href="#avis" class="hover:text-white">Avis</a>
+      <a href="#" class="group inline-flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 rounded-2xl bg-white/5 border border-white/10 shadow-soft items-center justify-center">
+          <span class="text-sm tracking-widest text-white/90">CB</span>
+        </span>
+        <span class="font-semibold tracking-tight text-white">Coki B&amp;B</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-neutral-300">
+        <a class="hover:text-white" href="#concept">Concept</a>
+        <a class="hover:text-white" href="#menu">Menus</a>
+        <a class="hover:text-white" href="#galerie">Galerie</a>
+        <a class="hover:text-white" href="#avis">Avis</a>
+        <a class="hover:text-white" href="#infos">Infos</a>
       </nav>
-      <div class="flex gap-2">
-        <a href="#reservation" class="px-4 py-2 rounded-xl bg-white text-neutral-950 text-sm font-semibold hover:bg-neutral-200">
+
+      <div class="flex items-center gap-2">
+        <a href="#menu" class="hidden sm:inline-flex px-4 py-2 rounded-2xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-sm text-white/90">
+          Voir les menus
+        </a>
+        <a href="#reservation" class="inline-flex px-4 py-2 rounded-2xl bg-white text-neutral-950 text-sm font-semibold hover:bg-neutral-200 shadow-glow">
           Réserver
         </a>
+        <button id="btnMobile" class="md:hidden inline-flex p-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10" aria-label="Ouvrir le menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-neutral-950/85 backdrop-blur-xl">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3 text-sm text-neutral-200">
+        <a href="#concept" class="py-2">Concept</a>
+        <a href="#menu" class="py-2">Menus</a>
+        <a href="#galerie" class="py-2">Galerie</a>
+        <a href="#avis" class="py-2">Avis</a>
+        <a href="#infos" class="py-2">Infos</a>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="relative">
-    <div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <p class="text-sm text-neutral-400 mb-3">Restaurant japonais • Cuisine contemporaine</p>
-        <h1 class="text-4xl md:text-5xl font-bold leading-tight">
-          Une table japonaise moderne,<br class="hidden md:block" /> pensée pour le plaisir.
-        </h1>
-        <p class="mt-5 text-neutral-300 text-lg leading-relaxed">
-          Menus clairs, ambiance chaleureuse, produits frais. Réservez en quelques secondes — sans attente au téléphone.
-        </p>
+  <section class="relative overflow-hidden grain">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1542737579-bb9f3e0c8b49?auto=format&fit=crop&w=2400&q=80"
+        alt="Cuisine japonaise contemporaine"
+        class="h-full w-full object-cover opacity-35"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/65 to-neutral-950"></div>
+      <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
+      <div class="absolute -bottom-20 -right-28 h-96 w-96 rounded-full bg-white/5 blur-3xl"></div>
+    </div>
 
-        <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="#reservation" class="px-5 py-3 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200 text-center">
-            Réserver une table
-          </a>
-          <a href="#menu" class="px-5 py-3 rounded-2xl border border-neutral-700 hover:border-neutral-500 text-neutral-100 text-center">
-            Voir les menus
-          </a>
+    <div class="relative max-w-6xl mx-auto px-4 py-16 sm:py-20 md:py-28">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-200">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            <span>Paris 15 • Japonais contemporain</span>
+          </div>
+
+          <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.03]">
+            Une table japonaise moderne,<br class="hidden sm:block" />
+            <span class="text-white/80">pensée pour revenir.</span>
+          </h1>
+
+          <p class="mt-5 text-lg text-neutral-200/90 leading-relaxed max-w-xl">
+            Menus lisibles, infos instantanées, réservation sans friction.
+            Une expérience simple, premium, efficace — pour vos clients et pour vous.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#reservation" class="group relative overflow-hidden inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-neutral-950 font-semibold shadow-glow hover:bg-neutral-200">
+              <span class="relative z-10">Réserver une table</span>
+              <span class="absolute inset-y-0 left-0 w-1/3 bg-white/40 blur-xl animate-sheen"></span>
+            </a>
+            <a href="#menu" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white/95">
+              Découvrir les menus
+            </a>
+          </div>
+
+          <div class="mt-9 grid grid-cols-3 gap-3 max-w-xl">
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+              <div class="text-white font-semibold">Rapide</div>
+              <div class="text-xs text-neutral-300 mt-1">Réserver en 2 clics</div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+              <div class="text-white font-semibold">Clair</div>
+              <div class="text-xs text-neutral-300 mt-1">Menus HTML indexables</div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+              <div class="text-white font-semibold">Local</div>
+              <div class="text-xs text-neutral-300 mt-1">SEO Google optimisé</div>
+            </div>
+          </div>
         </div>
 
-        <div class="mt-8 grid grid-cols-3 gap-4 text-sm text-neutral-300">
-          <div class="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
-            <div class="font-semibold text-white">Rapide</div>
-            <div class="text-neutral-400">Infos & réservation</div>
+        <!-- Right card -->
+        <div class="reveal md:justify-self-end">
+          <div class="rounded-[28px] border border-white/10 bg-gradient-to-b from-white/10 to-white/5 shadow-glow p-5 sm:p-6 animate-floaty">
+            <div class="rounded-3xl border border-white/10 bg-neutral-950/70 p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Expérience client</p>
+                  <h2 class="mt-2 text-xl font-bold">Tout ce qu’un client cherche, immédiatement</h2>
+                  <p class="mt-2 text-sm text-neutral-300 leading-relaxed">
+                    Horaires, accès, menus, options, avis — et un CTA réservation évident.
+                  </p>
+                </div>
+                <div class="hidden sm:flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 border border-white/10">
+                  <span class="text-white/70 text-sm">★</span>
+                </div>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-neutral-200">
+                  <div class="text-xs text-neutral-400">Horaires</div>
+                  <div class="mt-1 font-semibold">Toujours à jour</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-neutral-200">
+                  <div class="text-xs text-neutral-400">Menus</div>
+                  <div class="mt-1 font-semibold">Lisibles & SEO</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-neutral-200">
+                  <div class="text-xs text-neutral-400">Avis</div>
+                  <div class="mt-1 font-semibold">Preuve sociale</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-neutral-200">
+                  <div class="text-xs text-neutral-400">Réservation</div>
+                  <div class="mt-1 font-semibold">Sans friction</div>
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p class="text-sm text-neutral-200">
+                  Bonus : ce template est pensé pour intégrer un <span class="font-semibold text-white">chatbot</span> et une <span class="font-semibold text-white">IA téléphonique</span>.
+                </p>
+              </div>
+
+              <div class="mt-5 flex flex-col sm:flex-row gap-3">
+                <a class="inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200" href="#reservation">
+                  Réserver
+                </a>
+                <a class="inline-flex items-center justify-center px-4 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 text-white" href="#infos">
+                  Voir l’accès
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
-            <div class="font-semibold text-white">Clair</div>
-            <div class="text-neutral-400">Menus lisibles</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
-            <div class="font-semibold text-white">Local</div>
-            <div class="text-neutral-400">SEO Google</div>
-          </div>
+
+          <p class="mt-4 text-xs text-neutral-400">
+            (Démo premium) — Remplace le contenu par les vraies infos du restaurant en 10 minutes.
+          </p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900 to-neutral-950 p-6">
-        <div class="rounded-2xl bg-neutral-950 border border-neutral-800 p-5">
-          <p class="text-xs uppercase tracking-widest text-neutral-400">Ce que les clients veulent</p>
-          <ul class="mt-4 space-y-3 text-neutral-200">
-            <li class="flex gap-3"><span class="text-neutral-500">✓</span> Horaires & accès</li>
-            <li class="flex gap-3"><span class="text-neutral-500">✓</span> Menus et options</li>
-            <li class="flex gap-3"><span class="text-neutral-500">✓</span> Réservation simple</li>
-            <li class="flex gap-3"><span class="text-neutral-500">✓</span> Avis & confiance</li>
-          </ul>
+  <!-- Trust strip -->
+  <section class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div class="text-white font-semibold">SEO local</div>
+          <div class="text-sm text-neutral-300 mt-1">Structure Google-ready</div>
+        </div>
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div class="text-white font-semibold">Mobile-first</div>
+          <div class="text-sm text-neutral-300 mt-1">Fluide sur smartphone</div>
+        </div>
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div class="text-white font-semibold">Conversion</div>
+          <div class="text-sm text-neutral-300 mt-1">CTA & parcours clairs</div>
+        </div>
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div class="text-white font-semibold">Évolutif</div>
+          <div class="text-sm text-neutral-300 mt-1">Chatbot & IA call</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="mt-6 rounded-2xl border border-neutral-800 p-4">
-            <p class="text-sm text-neutral-300">
-              👉 Démo : on peut ajouter ici un chatbot (plus tard) pour répondre 24/7.
+  <!-- Concept -->
+  <section id="concept" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Concept</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Cuisine japonaise contemporaine</h2>
+          <p class="mt-4 text-neutral-200/90 leading-relaxed text-lg">
+            Une carte courte, précise, pensée pour la fraîcheur. Un service fluide, une ambiance moderne, un niveau
+            d’exigence constant.
+          </p>
+          <p class="mt-4 text-neutral-300 leading-relaxed">
+            L’objectif : offrir une expérience simple et premium — et que vos clients trouvent instantanément ce qu’ils
+            cherchent (menus, horaires, accès, réservation).
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <div class="text-white font-semibold">Produits frais</div>
+              <div class="text-sm text-neutral-300 mt-1">Saisonnalité & précision</div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <div class="text-white font-semibold">Ambiance</div>
+              <div class="text-sm text-neutral-300 mt-1">Sobre, chaleureuse, moderne</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-soft">
+            <div class="aspect-[16/11] overflow-hidden rounded-3xl border border-white/10 bg-neutral-900">
+              <img
+                src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?auto=format&fit=crop&w=2000&q=80"
+                alt="Salle du restaurant"
+                class="h-full w-full object-cover opacity-90"
+                loading="lazy"
+              />
+            </div>
+            <div class="mt-5 grid grid-cols-3 gap-3 text-sm">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
+                <div class="text-neutral-400 text-xs">Réservations</div>
+                <div class="text-white font-semibold mt-1">+</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
+                <div class="text-neutral-400 text-xs">Temps gagné</div>
+                <div class="text-white font-semibold mt-1">++</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
+                <div class="text-neutral-400 text-xs">Crédibilité</div>
+                <div class="text-white font-semibold mt-1">10/10</div>
+              </div>
+            </div>
+            <p class="mt-4 text-xs text-neutral-400">
+              Astuce conversion : une belle photo + un CTA réservation visible = plus de clients sans effort.
             </p>
           </div>
         </div>
@@ -101,185 +372,378 @@
     </div>
   </section>
 
-  <!-- Concept -->
-  <section id="concept" class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-10">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold">Concept & cuisine</h2>
-        <p class="mt-4 text-neutral-300 leading-relaxed">
-          Une cuisine japonaise contemporaine : précision, fraîcheur, et une carte pensée pour revenir souvent.
-          Ici, la simplicité est travaillée — et chaque détail compte.
-        </p>
-        <p class="mt-4 text-neutral-300 leading-relaxed">
-          Idéal pour un dîner à deux, une sortie entre amis ou une pause déjeuner efficace.
+  <!-- Menu -->
+  <section id="menu" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="reveal">
+        <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Menus</p>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Lisibles, simples, indexables par Google</h2>
+          <div class="flex gap-2">
+            <button data-tab="dejeuner" class="tabBtn px-4 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 text-sm">Déjeuner</button>
+            <button data-tab="diner" class="tabBtn px-4 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 text-sm">Dîner</button>
+            <button data-tab="boissons" class="tabBtn px-4 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 text-sm">Boissons</button>
+          </div>
+        </div>
+        <p class="mt-4 text-neutral-300 leading-relaxed max-w-3xl">
+          Ici, on évite les PDF : le texte HTML est plus rapide, plus clair et surtout meilleur pour le SEO local.
+          Remplace juste les lignes ci-dessous par les vrais menus.
         </p>
       </div>
 
-      <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-        <h3 class="font-semibold text-white">Points forts</h3>
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-neutral-300">
-          <div class="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">Produits frais</div>
-          <div class="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">Service fluide</div>
-          <div class="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">Ambiance moderne</div>
-          <div class="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">Réservation simple</div>
+      <!-- Tabs content -->
+      <div class="mt-8 grid lg:grid-cols-3 gap-6">
+        <div class="reveal lg:col-span-2 rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+          <!-- Déjeuner -->
+          <div class="tabPanel" id="tab-dejeuner">
+            <h3 class="text-xl font-bold">Menu Déjeuner</h3>
+            <p class="mt-2 text-sm text-neutral-300">Rapide, précis, idéal en semaine.</p>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Entrée + Plat</div>
+                  <div class="text-sm text-neutral-300">Ex: soupe miso / plat du jour</div>
+                </div>
+                <div class="text-white font-semibold">18€</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Plat + Dessert</div>
+                  <div class="text-sm text-neutral-300">Ex: donburi / dessert maison</div>
+                </div>
+                <div class="text-white font-semibold">16€</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Entrée + Plat + Dessert</div>
+                  <div class="text-sm text-neutral-300">Une formule complète</div>
+                </div>
+                <div class="text-white font-semibold">22€</div>
+              </div>
+            </div>
+
+            <p class="mt-5 text-xs text-neutral-400">
+              Conseil : ajoute “options végétariennes”, “allergènes sur demande” pour réduire les appels.
+            </p>
+          </div>
+
+          <!-- Dîner -->
+          <div class="tabPanel hidden" id="tab-diner">
+            <h3 class="text-xl font-bold">Menu Dîner</h3>
+            <p class="mt-2 text-sm text-neutral-300">Plus gourmand, plus long, idéal à deux ou entre amis.</p>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Dégustation</div>
+                  <div class="text-sm text-neutral-300">Sélection du chef (à personnaliser)</div>
+                </div>
+                <div class="text-white font-semibold">—</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Plats signature</div>
+                  <div class="text-sm text-neutral-300">Ex: sashimi / robata / tempura</div>
+                </div>
+                <div class="text-white font-semibold">—</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Options végétariennes</div>
+                  <div class="text-sm text-neutral-300">Toujours disponibles</div>
+                </div>
+                <div class="text-white font-semibold">✓</div>
+              </div>
+            </div>
+
+            <p class="mt-5 text-xs text-neutral-400">
+              Conseil : affiche 3–5 plats “best sellers” — ça augmente le panier moyen.
+            </p>
+          </div>
+
+          <!-- Boissons -->
+          <div class="tabPanel hidden" id="tab-boissons">
+            <h3 class="text-xl font-bold">Boissons</h3>
+            <p class="mt-2 text-sm text-neutral-300">Courte sélection, facile à comprendre.</p>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Saké (verre / carafe)</div>
+                  <div class="text-sm text-neutral-300">Sec, fruité (à personnaliser)</div>
+                </div>
+                <div class="text-white font-semibold">—</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Thés japonais</div>
+                  <div class="text-sm text-neutral-300">Sencha / genmaicha</div>
+                </div>
+                <div class="text-white font-semibold">—</div>
+              </div>
+
+              <div class="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+                <div>
+                  <div class="text-white font-semibold">Softs maison</div>
+                  <div class="text-sm text-neutral-300">Gingembre / agrumes</div>
+                </div>
+                <div class="text-white font-semibold">—</div>
+              </div>
+            </div>
+
+            <p class="mt-5 text-xs text-neutral-400">
+              Conseil : une section “accords saké” peut booster l’upsell.
+            </p>
+          </div>
         </div>
+
+        <!-- Sidebar -->
+        <aside class="reveal rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+          <h3 class="text-lg font-bold">Infos utiles</h3>
+          <p class="mt-2 text-sm text-neutral-300">Pensé pour réduire les appels et convertir.</p>
+
+          <div class="mt-5 space-y-3 text-sm">
+            <div class="rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+              <div class="text-neutral-400 text-xs">Allergènes</div>
+              <div class="mt-1 text-white">Sur demande • Options possibles</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+              <div class="text-neutral-400 text-xs">Réservation</div>
+              <div class="mt-1 text-white">Conseillée en soirée</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-neutral-950/40 p-4">
+              <div class="text-neutral-400 text-xs">Groupes</div>
+              <div class="mt-1 text-white">Contactez-nous</div>
+            </div>
+          </div>
+
+          <a href="#reservation" class="mt-6 inline-flex w-full items-center justify-center px-4 py-3 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200">
+            Réserver maintenant
+          </a>
+
+          <p class="mt-4 text-xs text-neutral-400">
+            Pro-tip : le bouton Réserver doit être visible partout (header + sections).
+          </p>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- Menus -->
-  <section id="menu" class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold">Menus</h2>
-      <p class="mt-3 text-neutral-400">Exemple de structure claire (à personnaliser avec leurs vrais menus).</p>
-
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <h3 class="text-lg font-semibold text-white">Déjeuner</h3>
-          <p class="mt-2 text-neutral-400 text-sm">Rapide, précis, efficace.</p>
-          <ul class="mt-4 space-y-3 text-neutral-200">
-            <li class="flex justify-between"><span>Entrée + Plat</span><span class="text-neutral-400">18€</span></li>
-            <li class="flex justify-between"><span>Plat + Dessert</span><span class="text-neutral-400">16€</span></li>
-            <li class="flex justify-between"><span>Entrée + Plat + Dessert</span><span class="text-neutral-400">22€</span></li>
-          </ul>
-        </div>
-
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <h3 class="text-lg font-semibold text-white">Dîner</h3>
-          <p class="mt-2 text-neutral-400 text-sm">Plus gourmand, plus long.</p>
-          <ul class="mt-4 space-y-3 text-neutral-200">
-            <li class="flex justify-between"><span>Menu dégustation</span><span class="text-neutral-400">—</span></li>
-            <li class="flex justify-between"><span>Plats signature</span><span class="text-neutral-400">—</span></li>
-            <li class="flex justify-between"><span>Options végétariennes</span><span class="text-neutral-400">✓</span></li>
-          </ul>
-        </div>
-
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <h3 class="text-lg font-semibold text-white">Infos allergènes</h3>
-          <p class="mt-2 text-neutral-400 text-sm">Clarté = moins d’appels.</p>
-          <ul class="mt-4 space-y-3 text-neutral-200">
-            <li>Indiquez les allergènes principaux</li>
-            <li>Précisez les options sans gluten si possible</li>
-            <li>Ajoutez “demandez à l’équipe sur place”</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Infos pratiques -->
-  <section id="infos" class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-10">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold">Infos pratiques</h2>
-        <p class="mt-4 text-neutral-300">
-          Adresse, horaires, accès — tout ce que Google et vos clients veulent trouver immédiatement.
+  <!-- Galerie -->
+  <section id="galerie" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="reveal">
+        <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Galerie</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Ambiance & assiettes</h2>
+        <p class="mt-4 text-neutral-300 max-w-3xl">
+          Des visuels propres, cohérents, récents. C’est un levier énorme pour Google Business Profile et pour la conversion.
         </p>
-
-        <div class="mt-6 space-y-3 text-neutral-200">
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
-            <div class="text-neutral-400 text-sm">Adresse</div>
-            <address class="not-italic">
-              66 avenue Émile Zola, 75015 Paris
-            </address>
-          </div>
-
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
-            <div class="text-neutral-400 text-sm">Horaires</div>
-            <div>Lun–Ven : 12:00–14:30 • 19:00–22:30</div>
-            <div>Sam : 19:00–23:00 • Dim : fermé</div>
-          </div>
-
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
-            <div class="text-neutral-400 text-sm">Téléphone</div>
-            <a class="underline hover:text-white" href="tel:+33100000000">+33 1 00 00 00 00</a>
-          </div>
-        </div>
       </div>
 
-      <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-        <h3 class="font-semibold text-white">Accès</h3>
-        <p class="mt-3 text-neutral-300 text-sm">
-          Ajoutez ici métro / repères / parking. On pourra intégrer une carte Google ensuite.
-        </p>
-
-        <div class="mt-6 rounded-2xl border border-neutral-800 bg-neutral-950 p-4 text-neutral-300 text-sm">
-          ✅ SEO local : ville + quartier + type de cuisine + infos pratiques = Google comprend mieux votre établissement.
-        </div>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <figure class="reveal rounded-[28px] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
+          <img class="h-64 w-full object-cover" loading="lazy" alt="Assiette japonaise" src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200&q=80">
+          <figcaption class="p-4 text-sm text-neutral-300">Signature • Fraîcheur • Précision</figcaption>
+        </figure>
+        <figure class="reveal rounded-[28px] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
+          <img class="h-64 w-full object-cover" loading="lazy" alt="Sushi et sashimi" src="https://images.unsplash.com/photo-1553621042-4d70aa9f4f06?auto=format&fit=crop&w=1200&q=80">
+          <figcaption class="p-4 text-sm text-neutral-300">Carte courte, bien exécutée</figcaption>
+        </figure>
+        <figure class="reveal rounded-[28px] overflow-hidden border border-white/10 bg-white/5 shadow-soft">
+          <img class="h-64 w-full object-cover" loading="lazy" alt="Ambiance restaurant moderne" src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=1200&q=80">
+          <figcaption class="p-4 text-sm text-neutral-300">Atmosphère moderne & chaleureuse</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <!-- Avis -->
-  <section id="avis" class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold">Avis</h2>
-      <p class="mt-3 text-neutral-400">Exemples (à remplacer par de vrais avis Google).</p>
+  <section id="avis" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="reveal">
+        <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Avis</p>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">La preuve sociale qui fait réserver</h2>
+          <a href="#" class="text-sm text-neutral-300 underline decoration-white/20 hover:decoration-white/60 hover:text-white">
+            Voir sur Google
+          </a>
+        </div>
+      </div>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <div class="text-sm text-neutral-400">★★★★★</div>
-          <p class="mt-3 text-neutral-200">“Service impeccable et plats super frais. On revient.”</p>
-          <p class="mt-4 text-neutral-500 text-sm">— Camille</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="reveal rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs text-neutral-400">★★★★★</div>
+          <p class="mt-3 text-neutral-100 leading-relaxed">“Service impeccable, cuisine fraîche. Menu clair, réservation rapide.”</p>
+          <p class="mt-4 text-sm text-neutral-400">— Camille</p>
         </div>
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <div class="text-sm text-neutral-400">★★★★★</div>
-          <p class="mt-3 text-neutral-200">“Ambiance moderne, menu clair, excellent.”</p>
-          <p class="mt-4 text-neutral-500 text-sm">— Yannis</p>
+        <div class="reveal rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs text-neutral-400">★★★★★</div>
+          <p class="mt-3 text-neutral-100 leading-relaxed">“Ambiance moderne, plats précis. Très bonne adresse.”</p>
+          <p class="mt-4 text-sm text-neutral-400">— Yannis</p>
         </div>
-        <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-6">
-          <div class="text-sm text-neutral-400">★★★★★</div>
-          <p class="mt-3 text-neutral-200">“Très bonne adresse japonaise, réservation facile.”</p>
-          <p class="mt-4 text-neutral-500 text-sm">— Sarah</p>
+        <div class="reveal rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="text-xs text-neutral-400">★★★★★</div>
+          <p class="mt-3 text-neutral-100 leading-relaxed">“Excellent. On comprend tout en 10 secondes : horaires, menus, accès.”</p>
+          <p class="mt-4 text-sm text-neutral-400">— Sarah</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Réservation -->
-  <section id="reservation" class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-14">
-      <div class="rounded-3xl border border-neutral-800 bg-neutral-900 p-8 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-bold">Réserver</h2>
-        <p class="mt-3 text-neutral-300">
-          Un parcours simple : téléphone, formulaire, ou lien direct vers une solution de réservation.
-        </p>
+  <!-- Infos / SEO local -->
+  <section id="infos" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.22em] text-neutral-400">Infos pratiques</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">Horaires, accès, contact</h2>
+          <p class="mt-4 text-neutral-300 leading-relaxed max-w-xl">
+            C’est la section la plus consultée (et la plus utile pour le SEO local). Elle doit être parfaite.
+          </p>
 
-        <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="tel:+33100000000" class="px-5 py-3 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200 text-center">
-            Appeler
-          </a>
-          <a href="mailto:contact@exemple.com" class="px-5 py-3 rounded-2xl border border-neutral-700 hover:border-neutral-500 text-center">
-            Envoyer un email
-          </a>
-          <a href="#" class="px-5 py-3 rounded-2xl border border-neutral-700 hover:border-neutral-500 text-center">
-            Lien réservation (à ajouter)
-          </a>
+          <div class="mt-6 space-y-4">
+            <div class="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+              <div class="text-xs text-neutral-400">Adresse</div>
+              <address class="not-italic mt-2 text-white font-semibold">
+                66 avenue Émile Zola, 75015 Paris
+              </address>
+              <p class="mt-2 text-sm text-neutral-300">Métro : Charles Michels (exemple) • Quartier : Beaugrenelle (exemple)</p>
+            </div>
+
+            <div class="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+              <div class="text-xs text-neutral-400">Horaires</div>
+              <div class="mt-2 text-white font-semibold">Lun–Ven : 12:00–14:30 • 19:00–22:30</div>
+              <div class="mt-1 text-white font-semibold">Sam : 19:00–23:00 • Dim : fermé</div>
+              <p class="mt-2 text-sm text-neutral-300">Pense à gérer les jours fériés (Google Business Profile).</p>
+            </div>
+
+            <div class="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-soft">
+              <div class="text-xs text-neutral-400">Contact</div>
+              <div class="mt-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                <a class="inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200" href="tel:+33100000000">
+                  Appeler
+                </a>
+                <a class="inline-flex items-center justify-center px-4 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10" href="mailto:contact@exemple.com">
+                  Email
+                </a>
+              </div>
+              <p class="mt-2 text-sm text-neutral-300">
+                Astuce : un assistant IA peut répondre automatiquement pendant le rush.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <p class="mt-6 text-neutral-500 text-sm">
-          Bonus (plus tard) : chatbot + assistant téléphonique IA pour gérer les demandes 24/7.
-        </p>
+        <!-- Réservation bloc premium -->
+        <div class="reveal">
+          <div id="reservation" class="rounded-[34px] border border-white/10 bg-gradient-to-b from-white/10 to-white/5 shadow-glow p-7 sm:p-8">
+            <p class="text-xs uppercase tracking-[0.22em] text-neutral-300">Réservation</p>
+            <h3 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Réservez en quelques secondes</h3>
+            <p class="mt-4 text-neutral-200/90 leading-relaxed">
+              Un parcours simple. Moins d’appels perdus. Plus de tables remplies.
+            </p>
+
+            <div class="mt-6 grid sm:grid-cols-2 gap-3">
+              <a href="tel:+33100000000" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-white text-neutral-950 font-semibold hover:bg-neutral-200">
+                Appeler maintenant
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold text-white">
+                Lien de réservation
+              </a>
+            </div>
+
+            <div class="mt-6 rounded-3xl border border-white/10 bg-neutral-950/50 p-5">
+              <div class="text-sm text-neutral-200">
+                <span class="font-semibold text-white">Option avancée :</span> intégrer un chatbot (questions fréquentes) + une IA téléphonique (appels manqués).
+              </div>
+              <div class="mt-2 text-xs text-neutral-400">
+                Objectif : zéro friction, zéro client perdu pendant le service.
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between text-xs text-neutral-400">
+              <span>✅ Mobile-first</span>
+              <span>✅ SEO local</span>
+              <span>✅ Conversion</span>
+            </div>
+          </div>
+
+          <p class="mt-4 text-xs text-neutral-400">
+            Astuce closing : montre ce bloc au restaurateur, puis demande “combien d’appels vous perdez pendant le rush ?”
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="border-t border-neutral-900">
-    <div class="max-w-6xl mx-auto px-4 py-10 text-sm text-neutral-500">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
         <div>
-          <div class="text-neutral-200 font-semibold">Coki B&B</div>
-          <div>Restaurant japonais • Paris</div>
+          <div class="text-white font-semibold">Coki B&amp;B</div>
+          <div class="text-sm text-neutral-400">Restaurant japonais contemporain • Paris 15</div>
         </div>
-        <div class="text-neutral-500">
-          © <span id="year"></span> Coki B&B. Tous droits réservés.
+        <div class="text-sm text-neutral-400">
+          © <span id="year"></span> • Tous droits réservés
         </div>
+      </div>
+
+      <div class="mt-6 text-xs text-neutral-500 leading-relaxed">
+        <span class="text-neutral-400">SEO local :</span> restaurant japonais à Paris • menus • horaires • réservation • accès • avis.
       </div>
     </div>
   </footer>
 
   <script>
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const btnMobile = document.getElementById("btnMobile");
+    const mobileNav = document.getElementById("mobileNav");
+    if (btnMobile && mobileNav) {
+      btnMobile.addEventListener("click", () => mobileNav.classList.toggle("hidden"));
+      // Close on link click
+      mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileNav.classList.add("hidden")));
+    }
+
+    // Tabs
+    const btns = Array.from(document.querySelectorAll(".tabBtn"));
+    const panels = {
+      dejeuner: document.getElementById("tab-dejeuner"),
+      diner: document.getElementById("tab-diner"),
+      boissons: document.getElementById("tab-boissons")
+    };
+
+    function setActiveTab(name){
+      Object.values(panels).forEach(p => p.classList.add("hidden"));
+      panels[name]?.classList.remove("hidden");
+      btns.forEach(b => {
+        const active = b.dataset.tab === name;
+        b.classList.toggle("bg-white", active);
+        b.classList.toggle("text-neutral-950", active);
+        b.classList.toggle("font-semibold", active);
+        b.classList.toggle("border-white/20", active);
+        b.classList.toggle("bg-white/5", !active);
+        b.classList.toggle("text-white", !active);
+      });
+    }
+    setActiveTab("dejeuner");
+    btns.forEach(b => b.addEventListener("click", () => setActiveTab(b.dataset.tab)));
+
+    // Reveal on scroll
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("is-visible"); });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
